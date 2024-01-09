@@ -14,10 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from DocBlog.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', index, name='index'),
+    path('blog/', include('Blog.urls')), # blog app concated to main url ex : localhost:8000/blog/[see Blog/urls.py]
+    path('', index, name='index'), # main page
 ]
